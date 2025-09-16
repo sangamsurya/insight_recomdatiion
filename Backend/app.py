@@ -14,7 +14,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 # ================================
 # Initialize Flask App
 # ================================
-app = Flask(__name__, static_folder='../frontend')
+app = Flask(__name__, static_folder='../frontend', static_url_path='')
 CORS(app)  # Enable CORS for the frontend to access the API
 
 # ================================

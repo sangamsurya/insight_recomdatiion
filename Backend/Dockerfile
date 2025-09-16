@@ -1,21 +1,39 @@
-# Use the official Python base image
+# =========================
+# Base image
+# =========================
 FROM python:3.10-slim
 
-# Set the working directory inside the container
+# =========================
+# Set working directory
+# =========================
 WORKDIR /app
 
-# Install dependencies for the backend service
+# =========================
+# Install backend dependencies
+# =========================
 COPY ./Backend/requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project into the container
-COPY ./Backend/ .
+# =========================
+# Copy backend and frontend code
+# =========================
+COPY ./Backend/ ./backend
+COPY ./Frontend/ ./frontend
 
-# Expose the port that Gunicorn will run on
+# =========================
+# Expose port
+# =========================
 EXPOSE 8000
 
+# =========================
+# Set environment variables (optional)
+# =========================
+ENV PORT=8000
+ENV FLASK_APP=backend/app.py
+ENV FLASK_ENV=production
 
-# Run the Flask app using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app"]
+# =========================
+# Start Gunicorn server
+# =========================
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.app:app"]
 
