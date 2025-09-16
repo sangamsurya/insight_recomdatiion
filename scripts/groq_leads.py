@@ -35,8 +35,8 @@ def generate_insights(financial_data: dict) -> str:
     payload = {
         "model": "llama-3.1-8b-instant",
         "messages": [
-            {"role": "system", "content": "You are a business analyst providing company performance insights."},
-            {"role": "user", "content": f"Generate performance insights and recommendations based on this data:\n{summary}"}
+            {"role": "system", "content": "You are a business analyst providing company performance insights in 200 words."},
+            {"role": "user", "content": f"Generate performance insights and recommendations based on this data in only 200 words:\n{summary}"}
         ],
         "temperature": 0.7
     }
