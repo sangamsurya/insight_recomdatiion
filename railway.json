@@ -4,8 +4,8 @@
   "services": [
     {
       "name": "web",
-      "rootDir": "./backend",
-      "startCommand": "gunicorn --bind 0.0.0.0:$PORT app:app",
+      "rootDir": "./Backend",
+      "startCommand": "gunicorn --bind 0.0.0.0:$PORT flask_app:app",
       "buildCommand": "pip install -r requirements.txt",
       "isPublic": true
     },
