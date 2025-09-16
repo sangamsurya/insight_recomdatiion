@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./Backend/ ./backend
 COPY ./frontend/ ./frontend
 
-# Expose port (optional, for clarity)
+# Expose port
 EXPOSE 8000
 
 # Environment variables
