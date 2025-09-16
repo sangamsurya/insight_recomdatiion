@@ -1,0 +1,21 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "name": "company-insights-app",
+  "services": [
+    {
+      "name": "web",
+      "rootDir": "./backend",
+      "startCommand": "gunicorn --bind 0.0.0.0:$PORT app:app",
+      "buildCommand": "pip install -r requirements.txt",
+      "isPublic": true
+    },
+    {
+      "name": "data-cronjob",
+      "rootDir": "./scripts",
+      "startCommand": "python run_scripts.py",
+      "buildCommand": "pip install -r requirements.txt",
+      "isPublic": false,
+      "cron": "0 0 * * *"
+    }
+  ]
+}
