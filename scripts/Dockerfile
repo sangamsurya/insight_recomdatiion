@@ -1,18 +1,15 @@
-# Use the official Python base image
+# Dockerfile for the scheduled scripts
 FROM python:3.10-slim
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Install dependencies for the backend service
-COPY ./Backend/requirements.txt ./Backend/
-RUN pip install --no-cache-dir -r ./Backend/requirements.txt
+# Copy and install the dependencies for the scripts
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project into the container
+# Copy the scripts themselves
 COPY . .
 
-# Expose the port that Gunicorn will run on
-EXPOSE $PORT
-
-# Run the Flask app using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "Backend.flask_app:app"]
+# Define the default command to run your script
+CMD ["python", "run_scripts.py"]
