@@ -5,7 +5,8 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy and install the dependencies for the scripts
-COPY requirements.txt .
+COPY /scripts/requirements.txt .
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the scripts themselves
