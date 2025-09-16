@@ -1,39 +1,21 @@
-# =========================
-# Base image
-# =========================
 FROM python:3.10-slim
 
-# =========================
-# Set working directory
-# =========================
 WORKDIR /app
 
-# =========================
-# Install backend dependencies
-# =========================
+# Install dependencies
 COPY ./Backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# =========================
-# Copy backend and frontend code
-# =========================
+# Copy backend and frontend build
 COPY ./Backend/ ./backend
 COPY ./frontend/ ./frontend
 
-# =========================
-# Expose port
-# =========================
+# Expose port (optional, for clarity)
 EXPOSE 8000
 
-# =========================
-# Set environment variables (optional)
-# =========================
-ENV PORT=8000
+# Environment variables
 ENV FLASK_APP=backend/app.py
 ENV FLASK_ENV=production
 
-# =========================
-# Start Gunicorn server
-# =========================
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.app:app"]
-
+# Run Gunicorn using Railway's $PORT
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:$PORT backend.app:app"]
