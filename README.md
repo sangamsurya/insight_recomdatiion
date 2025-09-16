@@ -94,7 +94,7 @@ It demonstrates a complete data-driven workflow — from **data ingestion → AI
 ### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/sangamsurya/insight_recomdatiion](https://github.com/sangamsurya/insight_recomdatiion)
+git clone https://github.com/sangamsurya/Financial-Insights-Engine
 cd financial-insights-engine
 ```
 
