@@ -5,15 +5,14 @@
     {
       "name": "web",
       "rootDir": "./Backend",
-      "startCommand": "gunicorn --bind 0.0.0.0:$PORT flask_app:app",
-      "buildCommand": "pip install -r requirements.txt",
-      "isPublic": true
+      "dockerfilePath": "./Backend/Dockerfile",
+      "isPublic": true,
+      "port": "8000"
     },
     {
       "name": "data-cronjob",
       "rootDir": "./scripts",
-      "startCommand": "python run_scripts.py",
-      "buildCommand": "pip install -r requirements.txt",
+      "dockerfilePath": "./scripts/Dockerfile",
       "isPublic": false,
       "cron": "0 0 * * *"
     }
