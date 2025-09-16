@@ -5,11 +5,12 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Install dependencies for the backend service
-COPY ./Backend/requirements.txt ./Backend/
-RUN pip install --no-cache-dir -r ./Backend/requirements.txt
+COPY ./Backend/requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire project into the container
-COPY . .
+COPY ./Backend/ .
 
 # Expose the port that Gunicorn will run on
 EXPOSE $PORT
